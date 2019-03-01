@@ -1,13 +1,6 @@
 // Import your components CSS files here.
 @import "alert";
 @import "navbar";
-
-.flex-container {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 20px;
-}
-
-// .flex-item {
-//   background-image:
-// }
+@import "card";
+@import "banner";
+@import "footer";

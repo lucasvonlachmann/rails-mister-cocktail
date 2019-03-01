@@ -2,21 +2,20 @@
 
   <h1 class="text-center">Cocktails</h1>
 
-  <div class="flex-container">
+  <div class="cards">
 
     <% @cocktails.each do |cocktail| %>
+      <%= link_to cocktail_path(cocktail) do %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path photo_helper(cocktail), height: 300, width: 400, crop: :fill %>')">
 
-      <div>
-        <h3><%= cocktail.name %></h3>
-        <%= link_to cocktail_path(cocktail), { class: "btn btn-primary" } do %>
           <%= cocktail.name %>
-          <span class="label label-primary">OPEN</span>
-        <% end %>
 
-      </div>
-
+        </div>
+      <% end %>
     <% end %>
 
   </div>
 
 </div>
+<br>
+

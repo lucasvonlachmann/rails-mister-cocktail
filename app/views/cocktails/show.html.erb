@@ -1,14 +1,20 @@
-<h1><%= @cocktail.name %></h1>
+<div class="container flex-container">
+  <div class="text-center">
+    <h1><%= @cocktail.name %></h1>
+  </div>
+  <div style="padding: 30px;">
+    <ul>
+      <% @cocktail.doses.each do |dose| %>
+        <li><strong><%= dose.ingredient.name %>:</strong> <%= dose.description %>     <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, dose_path(dose), data: {:confirm => 'Are you sure?'}, method: :delete %></li>
+      <% end %>
+    </ul>
+  </div>
 
-<ul>
-  <% @cocktail.doses.each do |dose| %>
-    <li><%= dose.ingredient.name %>: <%= dose.description %> -- <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, dose_path(dose), data: {:confirm => 'Are you sure?'}, method: :delete %></li>
+  <h3>Add Dose</h3>
+  <%= simple_form_for [@cocktail, @dose] do |f| %>
+    <%= f.association :ingredient %>
+    <%= f.input :description %>
+    <%= f.submit "add a dose", class: "btn btn-primary" %>
   <% end %>
-</ul>
-
-<h5>Add Dose</h5>
-<%= simple_form_for [@cocktail, @dose] do |f| %>
-  <%= f.association :ingredient %>
-  <%= f.input :description %>
-  <%= f.submit "add a dose", class: "btn btn-primary" %>
-<% end %>
+</div>
+<br>
