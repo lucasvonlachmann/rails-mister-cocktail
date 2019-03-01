@@ -1,0 +1,22 @@
+<div class="container">
+
+  <h1 class="text-center">Cocktails</h1>
+
+  <div class="flex-container">
+
+    <% @cocktails.each do |cocktail| %>
+
+      <div>
+        <h3><%= cocktail.name %></h3>
+        <%= link_to cocktail_path(cocktail), { class: "btn btn-primary" } do %>
+          <%= cocktail.name %>
+          <span class="label label-primary">OPEN</span>
+        <% end %>
+
+      </div>
+
+    <% end %>
+
+  </div>
+
+</div>
